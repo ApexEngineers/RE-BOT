@@ -143,6 +143,7 @@
     </section>
 
     
+    
     <section id="calculator" class="container">
 
         <h2>Calculate Your Potential Impact</h2>
@@ -180,16 +181,39 @@
             }
     
             let educationalMessage = "";
-            if (regionDiversionRate < 0.6) {
-                educationalMessage = "Your region has a low diversion rate. Contributing more to recycling can greatly improve this.";
-            } else if (regionDiversionRate < 0.7) {
-                educationalMessage = "Your region has an average diversion rate. Increasing awareness can help boost it further!";
-            } else {
-                educationalMessage = "Great job! Your region is performing well, but there's always room for improvement.";
+            if (regionDiversionRate === 0.65) {
+                educationalMessage = "In Delhi, about 70% of waste is diverted from landfills, showcasing significant improvements in waste management systems.";
+            } else if (regionDiversionRate === 0.80) {
+                educationalMessage = "Mumbai leads with an 80% landfill diversion rate, making significant strides in sustainability.";
+            } else if (regionDiversionRate === 0.65) {
+                educationalMessage = "Bangalore achieves a 65% waste diversion rate, with increasing focus on waste segregation and recycling.";
+            } else if (regionDiversionRate === 0.60) {
+                educationalMessage = "Chennai manages to divert 60% of waste from landfills, encouraging public participation in recycling programs.";
+            } else if (regionDiversionRate === 0.75) {
+                educationalMessage = "Hyderabad has a 75% landfill diversion rate, with effective recycling and waste management programs in place.";
+            } else if (regionDiversionRate === 0.70) {
+                educationalMessage = "Pune is at 70% waste diversion, showing positive results in public engagement and waste segregation.";
+            } else if (regionDiversionRate === 0.50) {
+                educationalMessage = "In Kolkata, waste diversion is lower, with only about 50% of waste being diverted from landfills.";
+            } else if (regionDiversionRate === 0.55) {
+                educationalMessage = "Ahmedabad diverts 55% of its waste, with growing initiatives to improve waste management and recycling.";
             }
     
             const divertedWaste = weeklyWaste * regionDiversionRate;
-            document.getElementById('result').innerHTML = `With Re-Bot's technology, approximately <strong>${divertedWaste.toFixed(2)} kg</strong> of waste can be diverted from landfills each week in your region.`;
+            const methaneReductionRate = 0.4;  // 40% reduction in methane emissions
+            const recyclingIncreaseRate = 0.48;  // 48% increase in recycling
+    
+            const methaneReduced = divertedWaste * methaneReductionRate;
+            const recyclingIncreased = weeklyWaste * recyclingIncreaseRate;
+    
+            document.getElementById('result').innerHTML = `
+                <ul>
+                    <li>Estimated weekly waste diverted from landfill: ${divertedWaste.toFixed(2)} kg</li>
+                    <li>Estimated weekly methane emission reduction: ${methaneReduced.toFixed(2)} kg</li>
+                    <li>Estimated increase in weekly recycling: ${recyclingIncreased.toFixed(2)} kg</li>
+                </ul>
+            `;
+    
             document.getElementById('educationalInsights').innerHTML = educationalMessage;
         }
     </script>
